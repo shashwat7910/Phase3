@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LappyShop.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    List<Orderdetails> orderDetails = ViewData["detailsOfOrder"] as List<Orderdetails>;
+}
+
+<blockquote class="blockquote">
+    <h1 class="display-4 text-center"><u>My Orders</u></h1>
+</blockquote>
+
+<table class="table table-hover" style="border: 1px solid black">
+    <thead class="bg-warning" style="text-align:center;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_ID)
+            </th>
+            <th>
+                Laptop Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in orderDetails)
+        {
+            <tr style="text-align:center;">
+                <td>
+                    @item.Order_id
+                </td>
+                <td>
+                    @item.Product_name
+                </td>
+                <td>
+                    @item.UserEmail
+                </td>
+                <td>
+                    @item.UserAddress
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Order_id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

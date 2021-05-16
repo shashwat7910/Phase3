@@ -1,0 +1,29 @@
+﻿
+@model IEnumerable<LappyShop.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+    </div>
+
+
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 300px">
+                <img src="@Html.DisplayFor(modelItem => item.image)" class="card-img-top" alt="..." height="200" width="200">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
+                    <h4 class="card-text text-center"><span class="badge badge-warning">&#8377;@Html.DisplayFor(modelItem => item.price)</span></h4>
+                    <div class="text-center">
+                        <a class="btn btn-primary" asp-action="ViewDetails" asp-route-id="@item.ID">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
